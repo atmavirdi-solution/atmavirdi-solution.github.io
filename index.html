@@ -9,6 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
 <style>
 
 *{
@@ -66,7 +69,7 @@ header{
     justify-content:space-between;
     align-items:center;
     padding:1rem 8%;
-    background:rgba(7,19,11,0.78);
+    background:rgba(7,19,11,0.72);
     backdrop-filter:blur(14px);
     border-bottom:1px solid rgba(255,255,255,0.08);
 }
@@ -86,14 +89,13 @@ header{
     height:60px;
     width:auto;
     object-fit:contain;
-    display:block;
 }
 
 .green{
     color:var(--accent);
 }
 
-/* Navigation */
+/* NAVIGATION */
 nav{
     display:flex;
     gap:2rem;
@@ -110,29 +112,54 @@ nav a:hover{
     color:var(--accent);
 }
 
-/* HERO */
+/* HERO VIDEO SECTION */
 .hero{
-    min-height:100vh;
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     text-align:center;
-    padding:0 10%;
     color:white;
-    background:
-    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
-    url('https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?auto=format&fit=crop&w=1600&q=80');
-    background-size:cover;
-    background-position:center;
+}
+
+/* VIDEO */
+.hero video{
+    position:absolute;
+    top:50%;
+    left:50%;
+    min-width:100%;
+    min-height:100%;
+    width:auto;
+    height:auto;
+    transform:translate(-50%, -50%);
+    object-fit:cover;
+    z-index:-2;
+}
+
+/* DARK OVERLAY */
+.hero::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.72)
+    );
+    z-index:-1;
 }
 
 .hero-content{
     max-width:900px;
+    padding:0 20px;
     animation:fadeUp 1.2s ease;
 }
 
 .hero h1{
-    font-size:4.2rem;
+    font-size:4.5rem;
     line-height:1.1;
     margin-bottom:1.5rem;
     font-weight:800;
@@ -147,6 +174,7 @@ nav a:hover{
     font-size:1.2rem;
     color:#d8ffe3;
     margin-bottom:2rem;
+    line-height:1.8;
 }
 
 /* BUTTON */
@@ -178,13 +206,13 @@ section{
 }
 
 .section-title h2{
-    font-size:2.6rem;
+    font-size:2.7rem;
     color:var(--primary);
     margin-bottom:1rem;
 }
 
 .section-title p{
-    max-width:700px;
+    max-width:750px;
     margin:auto;
     color:#4b5563;
 }
@@ -204,13 +232,13 @@ section{
 }
 
 .about-text h3{
-    color:var(--primary);
     font-size:2rem;
+    color:var(--primary);
     margin-bottom:1rem;
 }
 
 .about-text p{
-    line-height:1.8;
+    line-height:1.9;
     color:#444;
 }
 
@@ -256,23 +284,22 @@ section{
 
 .card p{
     color:#555;
+    line-height:1.8;
     position:relative;
-    line-height:1.7;
 }
 
-/* Feature List */
+/* FEATURES */
 .feature-list{
     padding-left:1.2rem;
     color:#444;
     line-height:1.8;
-    position:relative;
 }
 
 .feature-list li{
     margin-bottom:0.9rem;
 }
 
-/* Stats */
+/* STATS */
 .stats{
     margin-top:4rem;
     padding:4rem 2rem;
@@ -300,14 +327,41 @@ section{
 }
 
 .contact h2{
+    font-size:2.5rem;
     color:var(--primary);
     margin-bottom:1rem;
-    font-size:2.4rem;
 }
 
 .contact p{
     margin:1rem 0;
     color:#444;
+}
+
+/* SOCIAL LINKS */
+.social-links{
+    margin-top:2rem;
+    display:flex;
+    justify-content:center;
+    gap:1.5rem;
+    flex-wrap:wrap;
+}
+
+.social-links a{
+    text-decoration:none;
+    color:white;
+    background:linear-gradient(135deg,#16a34a,#22c55e);
+    padding:12px 20px;
+    border-radius:50px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    transition:0.3s;
+    font-weight:500;
+}
+
+.social-links a:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 30px rgba(34,197,94,0.3);
 }
 
 /* FOOTER */
@@ -318,7 +372,7 @@ footer{
     padding:2rem;
 }
 
-/* Animation */
+/* ANIMATION */
 @keyframes fadeUp{
     from{
         opacity:0;
@@ -330,7 +384,7 @@ footer{
     }
 }
 
-/* Mobile */
+/* MOBILE */
 @media(max-width:900px){
 
     header{
@@ -390,8 +444,13 @@ footer{
 
 </header>
 
-<!-- HERO -->
+<!-- HERO VIDEO -->
 <section class="hero">
+
+    <!-- REPLACE VIDEO LINK LATER -->
+    <video autoplay muted loop playsinline>
+        <source src="YOUR-VIDEO-LINK-HERE.mp4" type="video/mp4">
+    </video>
 
     <div class="hero-content">
 
@@ -433,7 +492,8 @@ footer{
             <h3>Biotechnology Meets Industrial Future</h3>
 
             <p>
-                We specialize in advanced biomaterial engineering, circular economy systems, and environmentally responsible manufacturing solutions. Our mission is to reduce industrial waste while creating durable, scalable, and commercially viable green materials for the modern world.
+                We specialize in advanced biomaterial engineering, circular economy systems, and environmentally responsible manufacturing solutions.
+                Our mission is to reduce industrial waste while creating durable, scalable, and commercially viable green materials for the modern world.
             </p>
 
         </div>
@@ -442,7 +502,7 @@ footer{
 
 </section>
 
-<!-- PRODUCTS / INNOVATIONS -->
+<!-- PRODUCTS -->
 <section id="innovations">
 
     <div class="section-title">
@@ -463,37 +523,22 @@ footer{
             <h3>🌱 MycroWrap</h3>
 
             <p>
-                MycroWrap is an innovative eco-friendly cling wrap engineered to keep food fresh while protecting the planet.
+                Innovative eco-friendly cling wrap engineered to keep food fresh while protecting the planet.
             </p>
 
             <br>
 
             <ul class="feature-list">
 
-                <li>
-                    <strong>Bio-Composite Material:</strong>
-                    Made from mushroom-derived chitosan reinforced with pineapple leaf fibers (PALF).
-                </li>
+                <li><strong>Bio-Composite:</strong> Mushroom-derived chitosan + pineapple leaf fibers (PALF).</li>
 
-                <li>
-                    <strong>Natural Antimicrobial Protection:</strong>
-                    Inhibits 99.9% of bacteria to extend food freshness naturally.
-                </li>
+                <li><strong>Antimicrobial:</strong> Inhibits 99.9% of bacteria naturally.</li>
 
-                <li>
-                    <strong>High Strength & Durability:</strong>
-                    Engineered to overcome the brittleness found in many bioplastics.
-                </li>
+                <li><strong>High Strength:</strong> Solves brittleness issues found in many bioplastics.</li>
 
-                <li>
-                    <strong>100% Compostable:</strong>
-                    Fully home-compostable within 60 days with zero microplastic waste.
-                </li>
+                <li><strong>100% Compostable:</strong> Breaks down within 60 days.</li>
 
-                <li>
-                    <strong>Circular Economy Innovation:</strong>
-                    Converts agricultural waste into premium sustainable packaging solutions.
-                </li>
+                <li><strong>Circular Economy:</strong> Converts agricultural waste into premium sustainable packaging.</li>
 
             </ul>
 
@@ -502,10 +547,8 @@ footer{
         <!-- MYCROSIP -->
         <div class="card">
 
-            <h3>🥤 MycroSip</h3>
-
-            <p>
-                MycroSip is a next-generation eco-green straw designed as a sustainable alternative to plastic straws.
+            MycroSip is a next-generation eco-green straw designed as a sustainable alternative to plastic straws.
+                A next-generation eco-green straw developed as a sustainable replacement for plastic straws.
             </p>
 
             <br>
@@ -548,47 +591,6 @@ footer{
 
             <p>
                 We assist industries in transitioning toward sustainable manufacturing and circular economy ecosystems.
-            </p>
-
-            <br>
-
-            <ul class="feature-list">
-
-                <li>Biomass waste utilization strategies</li>
-
-                <li>Green material implementation</li>
-
-                <li>ESG sustainability planning</li>
-
-                <li>Industrial eco-innovation consulting</li>
-
-                <li>Carbon reduction initiatives</li>
-
-            </ul>
-
-        </div>
-
-    </div>
-
-    <!-- STATS -->
-    <div class="stats">
-
-        <div class="stat">
-            <h2>99.9%</h2>
-            <p>Antimicrobial Protection</p>
-        </div>
-
-        <div class="stat">
-            <h2>60</h2>
-            <p>Days Compostable</p>
-        </div>
-
-        <div class="stat">
-            <h2>100%</h2>
-            <p>Eco-Conscious Innovation</p>
-        </div>
-
-    </div>
 
 </section>
 
@@ -611,9 +613,28 @@ footer{
             <strong>Location:</strong> Jelebu, Negeri Sembilan, Malaysia
         </p>
 
-        <a href="mailto:atmaviridi@gmail.com" class="btn">
-            Contact Us
-        </a>
+        <!-- SOCIALS -->
+        <div class="social-links">
+
+            <!-- WHATSAPP -->
+            <a href="https://wa.me/60136747386" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                +6013-6747386
+            </a>
+
+            <!-- INSTAGRAM -->
+            <a href="https://www.instagram.com/atma.hijau?igsh=MWJ6NWRoOHNhc3JwMg==" target="_blank">
+                <i class="fab fa-instagram"></i>
+                Atma.Hijau
+            </a>
+
+            <!-- TIKTOK -->
+            <a href="https://www.tiktok.com/" target="_blank">
+                <i class="fab fa-tiktok"></i>
+                AtmaVirdi
+            </a>
+
+        </div>
 
     </div>
 
